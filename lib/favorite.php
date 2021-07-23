@@ -56,13 +56,13 @@ class Favorite
             "order"  => ["ID" => "DESC"],
             "filter" => [
                 "UF_USER_ID" => $userId,
-                "UF_PROD_ID" => $ids,
+                "UF_ITEM_ID" => $ids,
             ],
 
         ]);
 
         while ($arRow = $result->Fetch()) {
-            $list[] = $arRow['UF_PROD_ID'];
+            $list[] = $arRow['UF_ITEM_ID'];
         }
 
         return $list;
@@ -84,7 +84,7 @@ class Favorite
         ]);
 
         while ($arRow = $result->Fetch()) {
-            $list[] = $arRow['UF_PROD_ID'];
+            $list[] = $arRow['UF_ITEM_ID'];
         }
 
         return $list;
@@ -107,7 +107,7 @@ class Favorite
         $favoriteObg = $this->getFavoriteObj();
         $arFields = array (
             'UF_USER_ID' => $userId,
-            'UF_PROD_ID' => $favId
+            'UF_ITEM_ID' => $favId
         );
 
         $result = $favoriteObg::add($arFields);
@@ -127,7 +127,7 @@ class Favorite
             "select" => ["ID"],
             "filter" => [
                 "UF_USER_ID" => $userId,
-                'UF_PROD_ID' => $favId
+                'UF_ITEM_ID' => $favId
             ],
 
         ]);
@@ -143,7 +143,6 @@ class Favorite
     {
         $favoriteObg = $this->getFavoriteObj();
         $rowId = $this->getRowId();
-
         if (empty($rowId)) {
             return false;
         }
